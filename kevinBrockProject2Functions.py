@@ -1,13 +1,12 @@
-folderPath = "c:/Users/Kevin/Documents/CSTMultimediaProgramming/bit_photos/"
-imageFinal = makePicture(folderPath + "1.jpg")
 
-def recolorImage(myImage, imageType):
-  for i in range(0, getWidth(myImage)):
-    for j in range(0, getHeight(myImage)):
-      testPixel = getPixel(myImage, i, j)
-      newRed = getRed(testPixel)
-      newGreen = getGreen(testPixel)
-      newBlue = getBlue(testPixel)
+def recolorImage(myImageName, imageType):
+  im = Image.open(myImageName)
+  pix = im.load()
+  for i in xrange(im.size[0]):
+    for j in xrange(im.size[1]):
+      newRed =  pix[x, y][0]
+      newGreen = pix[x, y][1]
+      newBlue =  pix[x, y][2]
       if(imageType == 0):
         newRed *= 1.75
       else: 
@@ -15,8 +14,8 @@ def recolorImage(myImage, imageType):
           newGreen *= 1.75
         if (imageType == 2):
           newBlue *= 1.75
-      newColor = makeColor(newRed, newGreen, newBlue)
-      setColor(getPixel(myImage, i, j), newColor)
+      return, newRed, newGreen, newBlue
+
       
       
 def pickMusic(redValue, greenValue, blueValue):
@@ -31,7 +30,4 @@ def pickMusic(redValue, greenValue, blueValue):
         return 3    
        
 
-
-recolorImage(imageFinal, 2)
-repaint(imageFinal)      
-show(imageFinal)     
+  
